@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<localRepository>C:\dev\appData\.m2\repository</localRepository>
+   <mirrors>
+      <mirror>
+         <!--This sends everything else to /public -->
+         <id>nexus</id>
+         <mirrorOf>*</mirrorOf>
+         <url>https://nexus-am.landisgyr.net/repository/public</url>
+      </mirror>
+   </mirrors>
+
+   <profiles>
+      <profile>
+         <id>nexus</id>
+         <!--Enable snapshots for the built in central repo to direct -->
+         <!--all requests to nexus via the mirror -->
+         <repositories>
+            <repository>
+               <id>central</id>
+               <url>http://central</url>
+               <releases>
+                  <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+            </repository>
+         </repositories>
+         <pluginRepositories>
+            <pluginRepository>
+               <id>central</id>
+               <url>http://central</url>
+               <releases>
+                  <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+            </pluginRepository>
+         </pluginRepositories>
+      </profile>
+   </profiles>
+   <activeProfiles>
+      <!--make the profile active all the time -->
+      <activeProfile>nexus</activeProfile>
+   </activeProfiles>
+
+  <pluginGroups>
+    <!-- define the sonatype plugin group, so the nexus plugins will work without typing the groupId -->
+                <pluginGroup>org.sonatype.plugins</pluginGroup>
+<!-- Access to LG custom plugins -->
+        <pluginGroup>com.landisgyr.plugins</pluginGroup>
+   </pluginGroups>
+
+</settings>
